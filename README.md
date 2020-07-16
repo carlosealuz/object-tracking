@@ -26,11 +26,8 @@
 
 ### I got some functions and ideas from this sources:
 
-* [Color picker]
-(https://github.com/alieldinayman/HSV-Color-Picker)
-* [Driving with motion recognition]
-(https://github.com/TanayKarve/Driving-using-motion-recogniton)
-
+* [Color picker](https://github.com/alieldinayman/HSV-Color-Picker)
+* [Driving with motion recognition](https://github.com/TanayKarve/Driving-using-motion-recogniton)
 
 ### Also, there is a lot of cool sources on stack overflow and opencv forum. 
 
