@@ -46,4 +46,22 @@ def page_up():
 def page_down():
     mouse.scroll(0, -2)
 
+@debounce(.3)
+def decrease_volume():
+    keyboard.pressed(Key.media_volume_down)
 
+@debounce(.3)
+def increase_volume():
+    keyboard.press(Key.media_volume_up)
+
+@debounce(1)
+def play_pause():
+    keyboard.press(Key.media_play_pause)
+
+@debounce(1)
+def next_media():
+    keyboard.press(Key.media_next)
+
+@debounce(1)
+def previous_media():
+    keyboard.press(Key.media_previous)
