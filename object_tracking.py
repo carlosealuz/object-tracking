@@ -1,3 +1,4 @@
+from pathlib import Path
 import cv2
 import numpy as np
 import math
@@ -96,14 +97,16 @@ def main():
 
     cv2.namedWindow('live feed')
 
-    lower_hsv, upper_hsv = load_last_sample()
+    my_file = Path("last_sample.json")
+    if my_file.is_file():
+        lower_hsv, upper_hsv = load_last_sample()
     
     cv2.setMouseCallback('live feed', mouse_pick_color)
 
     cap = cv2.VideoCapture(0)
-    cap.set(10, 120) # brightness     min: 0   , max: 255 , increment:1
+    cap.set(10, 100) # brightness     min: 0   , max: 255 , increment:1
     cap.set(11, 70) # contrast       min: 0   , max: 255 , increment:1
-    cap.set(12, 60) # saturation     min: 0   , max: 255 , increment:1
+    cap.set(12, 100) # saturation     min: 0   , max: 255 , increment:1
     cap.set(17, 4000) # white_balance  min: 4000, max: 7000, increment:1
     while(1):
         _, img = cap.read()
