@@ -7,6 +7,11 @@ import json
 from object_directions import direction_to_action, check_direction_to_move
 from open_file_with_hsv_sample import load_last_sample
 
+import urllib.request
+import cv2
+import numpy as np
+import time
+
 pixel = (0,0,0)
 image_hsv = None
 lower_hsv = [0, 0, 0]
@@ -104,11 +109,21 @@ def main():
     cv2.setMouseCallback('live feed', mouse_pick_color)
 
     cap = cv2.VideoCapture(0)
-    cap.set(10, 100) # brightness     min: 0   , max: 255 , increment:1
-    cap.set(11, 70) # contrast       min: 0   , max: 255 , increment:1
-    cap.set(12, 100) # saturation     min: 0   , max: 255 , increment:1
-    cap.set(17, 4000) # white_balance  min: 4000, max: 7000, increment:1
+    
+    #print(cap.get(10))
+    #print(cap.get(11))
+    #print(cap.get(12))
+    #print(cap.get(17))
+    #cap.set(10, 100) # brightness     min: 0   , max: 255 , increment:1
+    #cap.set(11, 130) # contrast       min: 0   , max: 255 , increment:1
+    #cap.set(12, 100) # saturation     min: 0   , max: 255 , increment:1
+    #cap.set(17, 4000) # white_balance  min: 4000, max: 7000, increment:1
     while(1):
+        #use this 2 lines if cellphone camera
+        #img_arr = np.array(bytearray(urllib.request.urlopen(URL).read()),dtype=np.uint8)
+        #img = cv2.imdecode(img_arr,-1)
+        
+        #use line below if webcam
         _, img = cap.read()
 
         im, image_hsv, skin, contours = find_object_contour(img)
@@ -125,8 +140,9 @@ def main():
                 
         except ValueError:
             pass
-
-        cv2.imshow('live feed', im)
+        
+        cv2.imshow('live feed',im)
+        #cv2.imshow('live feed', im)
         cv2.imshow('object track', skin)
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -135,7 +151,7 @@ def main():
             pass
         counter += 1
         
-
+    cap.release()
     cv2.destroyAllWindows()
 
 if __name__ == '__main__':
