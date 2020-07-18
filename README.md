@@ -3,6 +3,8 @@
 
 _This is a simple program, created with python and opencv, to do different tasks on your computer just by moving an object around in front of the camera._
 
+![Demo](./assets/demo.gif)
+
 ### Run this program with 
     python object_tracking.py
 
